@@ -14,19 +14,19 @@ template = {
     "path": "../Galileo"
 }
 enable_jsdelivr = {
-    "enabled": False,
-    "repo": ""
+    "enabled": True,
+    "repo": "YiminGao0113/Blog-With-GitHub-Boilerplate@gh-pages"
 }
 
 # 站点设置
-site_name = "我的个人博客"
+site_name = "一民的小屋"
 site_logo = "${static_prefix}logo.png"
 site_build_date = "2019-12-18T16:51+08:00"
-author = "熊猫小A"
-email = "hi@imalan.cn"
-author_homepage = "https://www.imalan.cn"
-description = "只坚持一种正义。我的正义。"
-key_words = ['Maverick', '熊猫小A', 'Galileo', 'blog']
+author = "高一民"
+email = "yg9bq@virginia.edu"
+author_homepage = "https://yimingao.com/"
+description = "One day at a time."
+key_words = ['Maverick', '高一民, 'Galileo', 'blog']
 language = 'zh-CN'
 external_links = [
     {
@@ -36,8 +36,8 @@ external_links = [
     },
     {
         "name": "三無計劃",
-        "url": "https://www.imalan.cn",
-        "brief": "熊猫小A的主页。"
+        "url": "https://yimingao.com/",
+        "brief": "高一民的主页。"
     }
 ]
 nav = [
@@ -66,14 +66,14 @@ social_links = [
     },
     {
         "name": "GitHub",
-        "url": "https://github.com/AlanDecode",
+        "url": "https://github.com/YiminGao0113",
         "icon": "gi gi-github"
     },
-    {
-        "name": "Weibo",
-        "url": "https://weibo.com/5245109677/",
-        "icon": "gi gi-weibo"
-    }
+    # {
+    #     "name": "Weibo",
+    #     "url": "https://weibo.com/5245109677/",
+    #     "icon": "gi gi-weibo"
+    # }
 ]
 
 head_addon = r'''
