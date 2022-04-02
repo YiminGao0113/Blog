@@ -30,14 +30,14 @@ key_words = ['Maverick', '高一民', 'Galileo', 'blog']
 language = 'zh-CN'
 external_links = [
     {
-        "name": "Maverick",
-        "url": "https://github.com/AlanDecode/Maverick",
+        "name": "不是程序员",
+        "url": "https://yimingao.com/",
         "brief": "🏄‍ Go My Own Way."
     },
     {
-        "name": "三無計劃",
-        "url": "https://yimingao.com/",
-        "brief": "高一民的主页。"
+        "name": "Mini Discord",
+        "url": "http://yimindiscord.com:5000/login",
+        "brief": "🏄‍ Have Fun"
     }
 ]
 nav = [
