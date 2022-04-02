@@ -26,7 +26,7 @@ author = "高一民"
 email = "yg9bq@virginia.edu"
 author_homepage = "https://yimingao.com/"
 description = "One day at a time."
-key_words = ['Maverick', '高一民, 'Galileo', 'blog']
+key_words = ['Maverick', '高一民‘, 'Galileo', 'blog']
 language = 'zh-CN'
 external_links = [
     {
