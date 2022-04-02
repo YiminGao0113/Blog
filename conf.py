@@ -3,7 +3,7 @@
 """
 
 # For Maverick
-site_prefix = "/Blog-With-GitHub-Boilerplate/"
+site_prefix = "/Blog/"
 source_dir = "../src/"
 build_dir = "../dist/"
 index_page_size = 10
@@ -15,13 +15,13 @@ template = {
 }
 enable_jsdelivr = {
     "enabled": True,
-    "repo": "YiminGao0113/Blog-With-GitHub-Boilerplate@gh-pages"
+    "repo": "YiminGao0113/Blog@gh-pages"
 }
 
 # 站点设置
 site_name = "一民的小屋"
 site_logo = "${static_prefix}logo.png"
-site_build_date = "2019-12-18T16:51+08:00"
+site_build_date = "2022-04-02T16:51+08:00"
 author = "高一民"
 email = "yg9bq@virginia.edu"
 author_homepage = "https://yimingao.com/"
