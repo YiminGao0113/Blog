@@ -36,7 +36,7 @@ external_links = [
     },
     {
         "name": "Mini Discord",
-        "url": "http://yimindiscord.com:5000/login",
+        "url": "http://yimindiscord.com:5000/",
         "brief": "🏄‍ Have Fun"
     }
 ]
