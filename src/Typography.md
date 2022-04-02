@@ -1,16 +1,16 @@
 ---
 layout: post
-title: Hello World!
-slug: typography
-date: 2019-12-18 16:50
+title: HelloWorld
+slug: my-first-awesome-post
+date: 2019-12-17 20:34
 status: publish
-author: AlanDecode
+author: Yimin
 categories: 
-  - Maverick
-tags:
-  - Design
-  - Typography
-excerpt: 这是一篇示例文章，在这里你可以看到常用页面元素的显示效果。
+  - 默认分类
+tags: 
+  - 博客
+  - GitHub
+excerpt: Hello World!
 ---
 
 [notice]这是一篇示例文章，在这里你可以看到常用页面元素的显示效果，同时也是 Markdown 语法的参考文章。保留或者删除本文，开始自己的创作吧！[/notice]

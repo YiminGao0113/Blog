@@ -2,9 +2,9 @@
 layout: post
 title: 我的第一篇文章
 slug: my-first-awesome-post
-date: 2019-12-17 20:34
+date: 2022-04-02 16:34
 status: publish
-author: <填写你的名字>
+author: Yimin
 categories: 
   - 默认分类
 tags: 
