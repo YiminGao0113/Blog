@@ -13,9 +13,7 @@ tags:
 excerpt: 记录一下Verilog总忘的syntax!
 ---
 [notice]记录一下刷题过程中Verilog总忘，总搞混的语法！[/notice]
-[links]
-[Interview Repo](https://github.com/YiminGao0113/IC_interview)
-[/links]
+
 ## If Statement
 When there are more than one commands, add begin ... end syntax for that branch.
 ```verilog
