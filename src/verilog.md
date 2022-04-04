@@ -13,7 +13,7 @@ tags:
 excerpt: Hello World!
 ---
 [notice]记录一下刷题过程中Verilog总忘，总搞混的语法！[/notice]
-![Interview Repo](https://github.com/YiminGao0113/IC_interview)
+[Interview Repo](https://github.com/YiminGao0113/IC_interview)
 ## If Statement
 When there are more than one commands, add begin ... end syntax for that branch.
 ```verilog
