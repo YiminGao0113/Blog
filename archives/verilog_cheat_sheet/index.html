@@ -1,0 +1,231 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Maverick,高一民,Galileo,blog" />
+    <meta name="generator" content="Maverick 1.1" />
+    <meta name="template" content="Galileo" />
+    <link rel="alternate" type="application/rss+xml" title="一民的小屋 &raquo; RSS 2.0" href="/Blog/feed/index.xml" />
+    <link rel="alternate" type="application/atom+xml" title="一民的小屋 &raquo; ATOM 1.0" href="/Blog/feed/atom/index.xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/YiminGao0113/Blog@gh-pages/assets/galileo-3f4dcc35c9.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/YiminGao0113/Blog@gh-pages/assets/ExSearch/ExSearch-182e5a8868.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/YiminGao0113/Blog@gh-pages/assets/katex.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700&display=swap">
+    <script>
+        var ExSearchConfig = {
+            root: "",
+            api: "https://cdn.jsdelivr.net/gh/YiminGao0113/Blog@gh-pages/b877a8bf4ff0ecd1443ead3aa7e9d2c0.json"
+        }
+    </script>
+    
+<title>Verilog Cheat Sheet - 一民的小屋</title>
+<meta name="author" content="Yimin" />
+<meta name="description" content="Hello World!" />
+<meta property="og:title" content="Verilog Cheat Sheet - 一民的小屋" />
+<meta property="og:description" content="Hello World!" />
+<meta property="og:site_name" content="一民的小屋" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/Blog/archives/verilog_cheat_sheet/" />
+<meta property="og:image" content="" />
+<meta property="article:published_time" content="2022-04-03T23:52:00-00.00" />
+<meta name="twitter:title" content="Verilog Cheat Sheet - 一民的小屋" />
+<meta name="twitter:description" content="Hello World!" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="" />
+
+
+    
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+
+    </head>
+    
+    <body>
+        
+        <div class="container">
+            <header id="ga-header">
+                <div first>
+                    <aside id="ga-brand">
+                        <h1 class="brand"><a class="no-style" href="/Blog/">一民的小屋</a></h1>
+                        <p>One day at a time.</p>
+                    </aside>
+                </div>
+                <div second id="ga-nav">
+                    <nav class="navs">
+                        <ul><li><a class="ga-highlight" href="/Blog/" target="_self">首页</a></li><span class="separator">·</span><li><a class="ga-highlight" href="/Blog/archives/" target="_self">归档</a></li><span class="separator">·</span><li><a class="ga-highlight" href="/Blog/about/" target="_self">关于</a></li><span class="separator">·</span><li><a href="#" target="_self" class="search-form-input ga-highlight">搜索</a></li></ul>
+                    </nav>
+                </div>
+            </header>
+            <div class="wrapper">
+                
+<main>    
+    <section class="ga-section ga-content">
+        <article class="yue">
+            <h1 class="ga-post_title">Verilog Cheat Sheet</h1>
+            <span class="ga-post_meta ga-mono">
+                <span>Yimin</span>
+                <time>
+                    2022-04-03
+                </time>
+                
+                in <a no-style class="category" href="/Blog/category/IC Interview/">
+                    IC Interview
+                </a>
+                
+                
+            </span>
+            <div class="ga-content_body">
+                <div class="notice">记录一下刷题过程中Verilog总忘，总搞混的语法！</div><h2>If Statement</h2>
+<p>When there are more than one commands, add begin ... end syntax for that branch.</p>
+<div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">()</span><span class="w"></span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">()</span><span class="w"></span>
+<span class="k">else</span><span class="w"></span>
+</pre></div>
+<h2>Case</h2>
+<p>Again add begin ... end syntax when there are more than one commands.</p>
+<div class="highlight"><pre><span></span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="w"></span>
+<span class="mh">3</span><span class="mb">&#39;b001</span><span class="o">:</span><span class="w"></span>
+<span class="mh">3</span><span class="mb">&#39;b010</span><span class="o">:</span><span class="w"></span>
+<span class="mh">3</span><span class="mb">&#39;b100</span><span class="o">:</span><span class="w"></span>
+<span class="k">default</span><span class="o">:</span><span class="w"></span>
+<span class="k">endcase</span><span class="w"></span>
+</pre></div>
+<h2>Loop</h2>
+<p>Inside always block...</p>
+<div class="highlight"><pre><span></span><span class="k">integer</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mh">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="mh">100</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mh">1</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
+<span class="w">  </span><span class="k">end</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
+</pre></div>
+<p>Outside always block...</p>
+<div class="highlight"><pre><span></span><span class="k">genvar</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="k">generate</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mh">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="mh">255</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mh">1</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span><span class="w"> </span><span class="n">loop_name</span><span class="w"></span>
+<span class="w">  </span><span class="k">end</span><span class="w"></span>
+<span class="k">endgenerate</span><span class="w"></span>
+</pre></div>
+<h2>Duplication</h2>
+<p>Some examples...</p>
+<div class="highlight"><pre><span></span><span class="p">{</span><span class="mh">51</span><span class="p">{</span><span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">}}</span><span class="w"></span>
+<span class="p">{</span><span class="n">width</span><span class="p">{</span><span class="n">A</span><span class="p">}}</span><span class="w"></span>
+<span class="k">assign</span><span class="w"> </span><span class="p">{</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mh">2</span><span class="o">:</span><span class="mh">1</span><span class="p">],</span><span class="w"> </span><span class="n">c</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="k">assign</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="mh">24</span><span class="p">{</span><span class="n">in</span><span class="p">[</span><span class="mh">7</span><span class="p">]}},</span><span class="w"> </span><span class="n">in</span><span class="p">}</span><span class="w"> </span><span class="c1">// Sign bit extension</span>
+<span class="k">assign</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">in</span><span class="p">[</span><span class="mh">0</span><span class="p">],</span><span class="w"> </span><span class="n">in</span><span class="p">[</span><span class="mh">1</span><span class="p">],</span><span class="w"> </span><span class="n">in</span><span class="p">[</span><span class="mh">2</span><span class="p">],</span><span class="w"> </span><span class="n">in</span><span class="p">[</span><span class="mh">3</span><span class="p">]}</span><span class="w"> </span><span class="c1">// Reverse</span>
+</pre></div>
+<h2>Onehot</h2>
+<div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">onehot</span><span class="p">(</span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="mh">255</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">r1</span><span class="p">,</span><span class="w"> </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="k">output</span><span class="w"> </span><span class="n">out</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">assign</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">[</span><span class="n">addr</span><span class="p">];</span><span class="w"></span>
+<span class="k">endmodule</span><span class="w"></span>
+</pre></div>
+<h2>Masking</h2>
+<div class="highlight"><pre><span></span><span class="k">assign</span><span class="w"> </span><span class="n">Q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r1</span><span class="p">[</span><span class="n">addr</span><span class="o">*</span><span class="mh">4</span><span class="o">+</span><span class="mh">3</span><span class="w"> </span><span class="o">-:</span><span class="w"> </span><span class="mh">4</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+<h2>Define a Register File</h2>
+<div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">regfile</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">we3</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="mh">4</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">ra1</span><span class="p">,</span><span class="w"> </span><span class="n">ra2</span><span class="p">,</span><span class="w"> </span><span class="n">wa3</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">wd3</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">rd1</span><span class="p">,</span><span class="w"> </span><span class="n">rd2</span><span class="w"></span>
+<span class="w">  </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">rf</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">];</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">we3</span><span class="p">)</span><span class="w"> </span><span class="n">rf</span><span class="p">[</span><span class="n">wa3</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">wd3</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">assign</span><span class="w"> </span><span class="n">rd1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ra1</span><span class="o">!=</span><span class="mh">0</span><span class="p">)</span><span class="o">?</span><span class="w"> </span><span class="n">rf</span><span class="p">[</span><span class="n">ra1</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">assign</span><span class="w"> </span><span class="n">rd2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ra2</span><span class="o">!=</span><span class="mh">0</span><span class="p">)</span><span class="o">?</span><span class="w"> </span><span class="n">rf</span><span class="p">[</span><span class="n">ra2</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">endmodule</span><span class="w"></span>
+</pre></div>
+
+            </div>
+        </article>
+        <div id="ga-tags">
+    
+    <span class="ga-tag">
+        <a class="ga-highlight" href="/Blog/tag/Verilog/">#Verilog</a>
+    </span>
+    
+    <span class="ga-tag">
+        <a class="ga-highlight" href="/Blog/tag/GitHub/">#GitHub</a>
+    </span>
+    
+</div>
+    </section>
+
+    
+<section id="ga-content_pager">
+
+    <div class="next">
+        <h3>没有了</h3>
+        <p class="yue">这是最新的文章</p>
+    </div>
+
+
+    <div class="prev">
+        <a class="ga-highlight" href="/Blog/archives/my-first-awesome-post/">我的第一篇文章</a>
+        <p class="yue">Hello World!</p>
+    </div>
+
+</section>
+
+
+    
+
+</main>
+
+                <footer class="ga-mono" id="ga-footer">
+                    <section>
+                        <span id="ga-uptime"></span>
+                        <span class="brand">一民的小屋</span>
+                    </section>
+                    <section>
+                        <p class="copyright">
+                            <span>Copyright © 2022 高一民</span>
+                            <span>Powered by <a no-style href="https://github.com/AlanDecode/Maverick" target="_blank">Maverick & Galileo</a></span>
+                        </p>
+                        <div class="copyright">
+                            <span class="footer-addon">
+                                
+                            </span>
+                            <nav class="social-links">
+                                <ul><li><a class="no-style" title="Twitter" href="https://twitter.com/AlanDecode" target="_blank"><i class="gi gi-twitter"></i>Twitter</a></li><span class="separator">·</span><li><a class="no-style" title="GitHub" href="https://github.com/YiminGao0113" target="_blank"><i class="gi gi-github"></i>GitHub</a></li></ul>
+                            </nav>
+                        </div>
+                    </section>
+                    <script>
+                        var site_build_date = "2022-04-02T16:51+08:00"
+                    </script>
+                    <script src="https://cdn.jsdelivr.net/gh/YiminGao0113/Blog@gh-pages/assets/galileo-dc4baa7cf4.js"></script>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <!--katex-->
+    <script defer src="https://cdn.jsdelivr.net/gh/YiminGao0113/Blog@gh-pages/assets/katex.min.js"></script>
+    <script>
+    mathOpts = {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "$", right: "$", display: false},
+            {left: "\\(", right: "\\)", display: false}
+        ]
+    };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/gh/YiminGao0113/Blog@gh-pages/assets/auto-render.min.js" onload="renderMathInElement(document.body, mathOpts);"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/YiminGao0113/Blog@gh-pages/assets/ExSearch/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/YiminGao0113/Blog@gh-pages/assets/ExSearch/ExSearch-493cb9cd89.js"></script>
+
+    
+    </body>
+</html>
