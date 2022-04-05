@@ -52,11 +52,11 @@ endgenerate
 ## Duplication
 Some examples...
 ```verilog
-{51{1'b1}}
-{width{A}}
-assign {b, a[2:1], c} = {}
-assign out = {{24{in[7]}}, in} // Sign bit extension
-assign out = {in[0], in[1], in[2], in[3]} // Reverse
+assign a = {51{1'b1}};
+assign b = {width{A}};
+assign {b, a[2:1], c} = {};
+assign out = {{24{in[7]}}, in}; // Sign bit extension
+assign out = {in[0], in[1], in[2], in[3]}; // Reverse
 ```
 ## Onehot
 ```verilog
