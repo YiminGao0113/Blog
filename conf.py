@@ -19,7 +19,7 @@ enable_jsdelivr = {
 }
 
 # 站点设置
-site_name = "一民的小屋"
+site_name = "一民的Blog"
 site_logo = "${static_prefix}logo.png"
 site_build_date = "2022-04-02T16:51+08:00"
 author = "高一民"
