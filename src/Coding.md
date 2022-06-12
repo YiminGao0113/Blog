@@ -415,3 +415,81 @@ $stop;
 end
 endmodule
 ```
+
+## Typical problems in HDLBits
+Create a set of counters suitable for use as a 12-hour clock (with am/pm indicator). Your counters are clocked by a fast-running clk, with a pulse on ena whenever your clock should increment (i.e., once per second).
+
+reset resets the clock to 12:00 AM. pm is 0 for AM and 1 for PM. hh, mm, and ss are two BCD (Binary-Coded Decimal) digits each for hours (01-12), minutes (00-59), and seconds (00-59). Reset has higher priority than enable, and can occur even when not enabled.
+
+The following timing diagram shows the rollover behaviour from 11:59:59 AM to 12:00:00 PM and the synchronous reset and enable behaviour.
+```verilog
+module top_module(
+    input clk,
+    input reset,
+    input ena,
+    output pm,
+    output [7:0] hh,
+    output [7:0] mm,
+    output [7:0] ss); 
+    wire enable[4:1];
+    
+    cnt #(.START(0), .END(9)) ss0(clk, reset, ena, ss[3:0]);
+    cnt #(.START(0), .END(5)) ss1(clk, reset, enable[1], ss[7:4]);
+    cnt #(.START(0), .END(9)) mm0(clk, reset, enable[2], mm[3:0]);
+    cnt #(.START(0), .END(5)) mm1(clk, reset, enable[3], mm[7:4]);
+    cnt_hour h(clk, reset, enable[4], hh[7:0], pm);
+
+    assign enable[1] = ena && ss[3:0] == 4'h9;
+    assign enable[2] = enable[1] && ss[7:4] == 4'h5;
+    assign enable[3] = enable[2] && mm[3:0] == 4'h9;
+    assign enable[4] = enable[3] && mm[7:4] == 4'h5;
+
+endmodule
+
+module cnt (
+    input clk,
+    input reset,
+    input ena,
+    output reg [3:0] q
+);
+parameter START = 0, END = 9;
+always @(posedge clk)
+    if (reset)
+        q <= START;
+    else if(~ena) q <= q;
+    else q <= q < END? q + 1 : START;
+endmodule
+
+module cnt_hour (
+    input clk,
+    input reset,
+    input ena,
+    output reg [7:0] q,
+    output reg pm
+);
+always @(posedge clk)
+    if (reset) q <= 8'h12;
+    else if(~ena) q <= q;
+    else case (q)
+            8'h12: q <= 8'h01;
+            8'h09: q <= 8'h10;
+            default: q[3:0] <= q[3:0] + 1;
+        endcase
+always @(posedge clk)
+    if (reset) pm <= 0;
+    else if(ena && q == 8'h11) pm <= ~pm;
+endmodule
+```
+
+## Odd parity
+```verilog
+module odd_sel(
+  input [31:0] bus,
+  input        sel, // sel = 1 check if odd, sel = 0 check if even
+  output check
+);
+wire check_tmp;
+assign check_tmp = ^bus;
+assign check = sel ? check_tmp : ~check_tmp;
+endmodule
+```
