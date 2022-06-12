@@ -1,0 +1,539 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Maverick,高一民,Galileo,blog" />
+    <meta name="generator" content="Maverick 1.1" />
+    <meta name="template" content="Galileo" />
+    <link rel="alternate" type="application/rss+xml" title="一民的小屋 &raquo; RSS 2.0" href="/Blog/feed/index.xml" />
+    <link rel="alternate" type="application/atom+xml" title="一民的小屋 &raquo; ATOM 1.0" href="/Blog/feed/atom/index.xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/YiminGao0113/Blog@gh-pages/assets/galileo-3f4dcc35c9.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/YiminGao0113/Blog@gh-pages/assets/ExSearch/ExSearch-182e5a8868.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/YiminGao0113/Blog@gh-pages/assets/katex.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700&display=swap">
+    <script>
+        var ExSearchConfig = {
+            root: "",
+            api: "https://cdn.jsdelivr.net/gh/YiminGao0113/Blog@gh-pages/d1dbef487c6b21ff4aebfc0a7f9bf75c.json"
+        }
+    </script>
+    
+<title>Coding Interview Questions - 一民的小屋</title>
+<meta name="author" content="Yimin" />
+<meta name="description" content="常见的手撕代码问题" />
+<meta property="og:title" content="Coding Interview Questions - 一民的小屋" />
+<meta property="og:description" content="常见的手撕代码问题" />
+<meta property="og:site_name" content="一民的小屋" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/Blog/archives/interview_question/" />
+<meta property="og:image" content="" />
+<meta property="article:published_time" content="2022-06-11T22:33:00-00.00" />
+<meta name="twitter:title" content="Coding Interview Questions - 一民的小屋" />
+<meta name="twitter:description" content="常见的手撕代码问题" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="" />
+
+
+    
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+
+    </head>
+    
+    <body>
+        
+        <div class="container">
+            <header id="ga-header">
+                <div first>
+                    <aside id="ga-brand">
+                        <h1 class="brand"><a class="no-style" href="/Blog/">一民的小屋</a></h1>
+                        <p>One day at a time.</p>
+                    </aside>
+                </div>
+                <div second id="ga-nav">
+                    <nav class="navs">
+                        <ul><li><a class="ga-highlight" href="/Blog/" target="_self">首页</a></li><span class="separator">·</span><li><a class="ga-highlight" href="/Blog/archives/" target="_self">归档</a></li><span class="separator">·</span><li><a class="ga-highlight" href="/Blog/about/" target="_self">关于</a></li><span class="separator">·</span><li><a href="#" target="_self" class="search-form-input ga-highlight">搜索</a></li></ul>
+                    </nav>
+                </div>
+            </header>
+            <div class="wrapper">
+                
+<main>    
+    <section class="ga-section ga-content">
+        <article class="yue">
+            <h1 class="ga-post_title">Coding Interview Questions</h1>
+            <span class="ga-post_meta ga-mono">
+                <span>Yimin</span>
+                <time>
+                    2022-06-11
+                </time>
+                
+                in <a no-style class="category" href="/Blog/category/IC Interview/">
+                    IC Interview
+                </a>
+                
+                
+            </span>
+            <div class="ga-content_body">
+                <div class="notice">记录常见的手撕代码问题，Github Repo：<a href="https://github.com/YiminGao0113/Interview/tree/master/verilog/RTL">repo:</a></div><h2>奇数分频</h2>
+<div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">f3</span><span class="w"> </span><span class="p">#(</span><span class="w"></span>
+<span class="w">    </span><span class="k">parameter</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">3</span><span class="w"></span>
+<span class="p">)(</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">rst_n</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">clk2</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+<span class="kt">reg</span><span class="w"> </span><span class="n">clk2_r</span><span class="p">;</span><span class="w"></span>
+<span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rst_n</span><span class="o">||</span><span class="n">count</span><span class="o">==</span><span class="n">N</span><span class="o">-</span><span class="mh">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"></span>
+<span class="w">        </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">clk2_r</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">count</span><span class="o">==</span><span class="mh">0</span><span class="o">||</span><span class="n">count</span><span class="o">==</span><span class="mh">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">clk2_r</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="o">~</span><span class="n">clk2_r</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">assign</span><span class="w"> </span><span class="n">clk2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clk2_r</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">endmodule</span><span class="w"></span>
+</pre></div>
+<h2>奇数分频（50%占空比）</h2>
+<div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">fn_50p</span><span class="p">#(</span><span class="w"></span>
+<span class="w">    </span><span class="k">parameter</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">5</span><span class="w"></span>
+<span class="p">)(</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">rst_n</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">clk2</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+
+<span class="kt">reg</span><span class="w"> </span><span class="n">posedge_clk2</span><span class="p">;</span><span class="w"></span>
+<span class="kt">reg</span><span class="w"> </span><span class="n">negedge_clk2</span><span class="p">;</span><span class="w"></span>
+<span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">posedge_count</span><span class="p">;</span><span class="w"></span>
+<span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">negedge_count</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Posedge counter</span>
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rst_n</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">posedge_count</span><span class="o">==</span><span class="n">N</span><span class="o">-</span><span class="mh">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">posedge_count</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"></span>
+<span class="w">        </span><span class="n">posedge_count</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">posedge_count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Negedge counter</span>
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">negedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rst_n</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">negedge_count</span><span class="o">==</span><span class="n">N</span><span class="o">-</span><span class="mh">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">negedge_count</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"></span>
+<span class="w">        </span><span class="n">negedge_count</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">negedge_count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Posedge clock</span>
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">posedge_clk2</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">posedge_count</span><span class="o">==</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mh">1</span><span class="p">)</span><span class="o">/</span><span class="mh">2</span><span class="o">||</span><span class="n">posedge_count</span><span class="o">==</span><span class="n">N</span><span class="o">-</span><span class="mh">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">posedge_clk2</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="o">~</span><span class="n">posedge_clk2</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Negedge clock</span>
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">negedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">negedge_clk2</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">negedge_count</span><span class="o">==</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mh">1</span><span class="p">)</span><span class="o">/</span><span class="mh">2</span><span class="o">||</span><span class="n">negedge_count</span><span class="o">==</span><span class="n">N</span><span class="o">-</span><span class="mh">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">negedge_clk2</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="o">~</span><span class="n">negedge_clk2</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">assign</span><span class="w"> </span><span class="n">clk2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">posedge_clk2</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">negedge_clk2</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">endmodule</span><span class="w"></span>
+</pre></div>
+<h2>偶数分频 (方法一)</h2>
+<div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">even_divide</span><span class="w"> </span><span class="p">#(</span><span class="w"></span>
+<span class="w">    </span><span class="k">parameter</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">8</span><span class="w"></span>
+<span class="p">)(</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">rst_n</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">clk2</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+<span class="kt">reg</span><span class="w"> </span><span class="n">clk2_r</span><span class="p">;</span><span class="w"></span>
+<span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rst_n</span><span class="o">||</span><span class="n">count</span><span class="o">==</span><span class="n">N</span><span class="o">/</span><span class="mh">2</span><span class="o">-</span><span class="mh">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"></span>
+<span class="w">        </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">clk2_r</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="o">==</span><span class="n">N</span><span class="o">/</span><span class="mh">2</span><span class="o">-</span><span class="mh">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">clk2_r</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="o">~</span><span class="n">clk2_r</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">assign</span><span class="w"> </span><span class="n">clk2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clk2_r</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">endmodule</span><span class="w"></span>
+</pre></div>
+<h2>偶数分频（方法二）</h2>
+<div class="highlight"><pre><span></span><span class="c1">// Register method</span>
+<span class="k">module</span><span class="w"> </span><span class="n">even_divide</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">rst_n</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">clk2</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">clk4</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">clk8</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+
+<span class="kt">reg</span><span class="w"> </span><span class="n">clk2_r</span><span class="p">;</span><span class="w"></span>
+<span class="kt">reg</span><span class="w"> </span><span class="n">clk4_r</span><span class="p">;</span><span class="w"></span>
+<span class="kt">reg</span><span class="w"> </span><span class="n">clk8_r</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">clk2_r</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"></span>
+<span class="w">        </span><span class="n">clk2_r</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="o">~</span><span class="n">clk2_r</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk2</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">clk4_r</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"></span>
+<span class="w">        </span><span class="n">clk4_r</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="o">~</span><span class="n">clk4_r</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk4</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">clk8_r</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span>
+<span class="w">        </span><span class="n">clk8_r</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="o">~</span><span class="n">clk8_r</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">assign</span><span class="w"> </span><span class="p">{</span><span class="n">clk2</span><span class="p">,</span><span class="w"> </span><span class="n">clk4</span><span class="p">,</span><span class="w"> </span><span class="n">clk8</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">clk2_r</span><span class="p">,</span><span class="w"> </span><span class="n">clk4_r</span><span class="p">,</span><span class="w"> </span><span class="n">clk8_r</span><span class="p">};</span><span class="w"></span>
+
+<span class="k">endmodule</span><span class="w"></span>
+</pre></div>
+<h2>小数分频(8.6分频)</h2>
+<div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">fraction_divide</span><span class="w"> </span><span class="p">#(</span><span class="w"></span>
+<span class="w">    </span><span class="k">parameter</span><span class="w"> </span><span class="n">M_N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">86</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">parameter</span><span class="w"> </span><span class="n">c86</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">32</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">parameter</span><span class="w"> </span><span class="n">div_e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">8</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">parameter</span><span class="w"> </span><span class="n">div_o</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">9</span><span class="w"></span>
+<span class="p">)(</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">rst_n</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w"> </span><span class="n">clk2</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+<span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"></span>
+<span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">count_even</span><span class="p">;</span><span class="w"></span>
+<span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">count_odd</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rst_n</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">count</span><span class="o">==</span><span class="n">M_N</span><span class="o">-</span><span class="mh">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"></span>
+<span class="w">        </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rst_n</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
+<span class="w">        </span><span class="n">count_even</span><span class="w">  </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">count_odd</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="o">&lt;=</span><span class="n">c86</span><span class="o">-</span><span class="mh">1</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
+<span class="w">        </span><span class="n">count_odd</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">count_even</span><span class="o">==</span><span class="n">div_e</span><span class="o">-</span><span class="mh">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="n">count_even</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">else</span><span class="w"></span>
+<span class="w">            </span><span class="n">count_even</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">count_even</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
+<span class="w">        </span><span class="n">count_odd</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">count_odd</span><span class="o">==</span><span class="n">div_o</span><span class="o">-</span><span class="mh">1</span><span class="p">)</span><span class="w"> </span>
+<span class="w">            </span><span class="n">count_odd</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">else</span><span class="w"></span>
+<span class="w">            </span><span class="n">count_odd</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">count_odd</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"></span>
+
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">clk2</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="o">&lt;=</span><span class="n">c86</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">count_even</span><span class="o">==</span><span class="mh">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">count_even</span><span class="o">==</span><span class="n">div_e</span><span class="o">/</span><span class="mh">2</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">clk2</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="o">~</span><span class="n">clk2</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="o">&gt;</span><span class="n">c86</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">count_odd</span><span class="o">==</span><span class="mh">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">count_odd</span><span class="o">==</span><span class="p">(</span><span class="n">div_o</span><span class="o">-</span><span class="mh">1</span><span class="p">)</span><span class="o">/</span><span class="mh">2</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">clk2</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="o">~</span><span class="n">clk2</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">endmodule</span><span class="w"></span>
+</pre></div>
+<h2>半分频 (50%占空比)</h2>
+<div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">half_divide</span><span class="w"> </span><span class="p">#(</span><span class="w"></span>
+<span class="w">    </span><span class="k">parameter</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">3</span><span class="w"> </span><span class="c1">// Meaning 3.5 frequency divider</span>
+<span class="p">)(</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">rst_n</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">clk2</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+<span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">p_cnt</span><span class="p">;</span><span class="w"></span>
+<span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">n_cnt</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">wire</span><span class="w"> </span><span class="n">p_clk</span><span class="p">;</span><span class="w"></span>
+<span class="kt">wire</span><span class="w"> </span><span class="n">n_clk</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rst_n</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">p_cnt</span><span class="o">==</span><span class="mh">2</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">p_cnt</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"></span>
+<span class="w">        </span><span class="n">p_cnt</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">p_cnt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">negedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rst_n</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">n_cnt</span><span class="o">==</span><span class="mh">2</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">n_cnt</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span>
+<span class="w">        </span><span class="n">n_cnt</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n_cnt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">assign</span><span class="w"> </span><span class="n">p_clk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_cnt</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="k">assign</span><span class="w"> </span><span class="n">n_clk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n_cnt</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"></span>
+<span class="k">assign</span><span class="w"> </span><span class="n">clk2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_clk</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">n_clk</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">endmodule</span><span class="w"></span>
+</pre></div>
+<h2>模三检测器（通过移位设计moore fsm）</h2>
+<div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">mod3_check</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">rst_n</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">test</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+
+<span class="k">parameter</span><span class="w"> </span><span class="n">IDLE</span><span class="o">=</span><span class="mh">3</span><span class="mb">&#39;b000</span><span class="p">,</span><span class="n">s0</span><span class="o">=</span><span class="mh">3</span><span class="mb">&#39;b001</span><span class="p">,</span><span class="n">s1</span><span class="o">=</span><span class="mh">3</span><span class="mb">&#39;b010</span><span class="p">,</span><span class="n">s2</span><span class="o">=</span><span class="mh">3</span><span class="mb">&#39;b100</span><span class="p">;</span><span class="w"></span>
+<span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">next_state</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">state</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">IDLE</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"></span>
+<span class="w">        </span><span class="n">state</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">next_state</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="o">*</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="nl">IDLE:</span><span class="w"> </span><span class="n">next_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="o">?</span><span class="nl">s1:</span><span class="n">s0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nl">s0:</span><span class="n">next_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="o">?</span><span class="nl">s1:</span><span class="n">s0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nl">s1:</span><span class="w"> </span><span class="n">next_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="o">?</span><span class="nl">s0:</span><span class="n">s2</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nl">s2:</span><span class="w"> </span><span class="n">next_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="o">?</span><span class="nl">s2:</span><span class="n">s1</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="n">next_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IDLE</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">endcase</span><span class="w"></span>
+
+<span class="k">assign</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span><span class="o">==</span><span class="n">s0</span><span class="p">;</span><span class="w"></span>
+<span class="k">endmodule</span><span class="w"></span>
+</pre></div>
+<h2>序列检测器（1001）</h2>
+<p>Mealy FSM approach</p>
+<div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">sequence_check_mealy</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">rst_n</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">sequence</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">test</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+
+<span class="k">parameter</span><span class="w"> </span><span class="n">IDLE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">3</span><span class="mb">&#39;b000</span><span class="p">,</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">3</span><span class="mb">&#39;b001</span><span class="p">,</span><span class="w"> </span><span class="n">s2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">3</span><span class="mb">&#39;b010</span><span class="p">,</span><span class="w"> </span><span class="n">s3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">3</span><span class="mb">&#39;b100</span><span class="p">;</span><span class="w"></span>
+<span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="mh">2</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">next_state</span><span class="p">;</span><span class="w"></span>
+<span class="kt">reg</span><span class="w"> </span><span class="n">test_reg</span><span class="p">,</span><span class="w"> </span><span class="n">next_test</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rst_n</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
+<span class="w">        </span><span class="n">state</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">IDLE</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">test_reg</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
+<span class="w">        </span><span class="n">state</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">next_state</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">test_reg</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">next_test</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"></span>
+
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="o">*</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="nl">IDLE:</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
+<span class="w">            </span><span class="n">next_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sequence</span><span class="o">?</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">IDLE</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">next_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">end</span><span class="w"></span>
+<span class="w">        </span><span class="nl">s1:</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
+<span class="w">            </span><span class="n">next_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sequence</span><span class="o">?</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">s2</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">next_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">end</span><span class="w"></span>
+<span class="w">        </span><span class="nl">s2:</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
+<span class="w">            </span><span class="n">next_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sequence</span><span class="o">?</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">s3</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">next_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">end</span><span class="w"></span>
+<span class="w">        </span><span class="nl">s3:</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
+<span class="w">            </span><span class="n">next_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sequence</span><span class="o">?</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">IDLE</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">next_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sequence</span><span class="o">==</span><span class="mh">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">end</span><span class="w"></span>
+<span class="w">        </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
+<span class="w">            </span><span class="n">next_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IDLE</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">next_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">end</span><span class="w"></span>
+<span class="w">    </span><span class="k">endcase</span><span class="w"></span>
+<span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">test_reg</span><span class="p">;</span><span class="w"></span>
+<span class="k">endmodule</span><span class="w"></span>
+</pre></div>
+<p>Moore FSM approach</p>
+<div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">sequence_check_moore</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">rst_n</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">sequence</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">test</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+
+<span class="k">parameter</span><span class="w"> </span><span class="n">IDLE</span><span class="o">=</span><span class="mh">4</span><span class="mb">&#39;b0000</span><span class="p">,</span><span class="n">s1</span><span class="o">=</span><span class="mh">4</span><span class="mb">&#39;b0001</span><span class="p">,</span><span class="n">s2</span><span class="o">=</span><span class="mh">4</span><span class="mb">&#39;b0010</span><span class="p">,</span><span class="n">s3</span><span class="o">=</span><span class="mh">4</span><span class="mb">&#39;b0100</span><span class="p">,</span><span class="n">s4</span><span class="o">=</span><span class="mh">4</span><span class="mb">&#39;b1000</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">next_state</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rst_n</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">state</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"></span>
+<span class="w">        </span><span class="n">state</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">next_state</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="o">*</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="nl">IDLE:</span><span class="w"> </span><span class="n">next_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sequence</span><span class="o">?</span><span class="nl">s1:</span><span class="n">IDLE</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nl">s1:</span><span class="w"> </span><span class="n">next_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sequence</span><span class="o">?</span><span class="nl">s1:</span><span class="n">s2</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nl">s2:</span><span class="w"> </span><span class="n">next_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sequence</span><span class="o">?</span><span class="nl">s1:</span><span class="n">s3</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nl">s3:</span><span class="w"> </span><span class="n">next_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sequence</span><span class="o">?</span><span class="nl">s4:</span><span class="n">IDLE</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nl">s4:</span><span class="w"> </span><span class="n">next_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sequence</span><span class="o">?</span><span class="nl">s1:</span><span class="n">s2</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">endcase</span><span class="w"></span>
+
+<span class="k">assign</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span><span class="o">==</span><span class="n">s4</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">endmodule</span><span class="w"></span>
+</pre></div>
+<p>Testbench with configurable 10-bit input sequence.</p>
+<div class="highlight"><pre><span></span><span class="no">`timescale</span><span class="w"> </span><span class="mh">1</span><span class="n">ns</span><span class="o">/</span><span class="mh">1</span><span class="n">ps</span><span class="w"></span>
+<span class="k">module</span><span class="w"> </span><span class="n">sequence_check_moore_tb</span><span class="p">();</span><span class="w"></span>
+<span class="kt">reg</span><span class="w"> </span><span class="n">clk</span><span class="p">;</span><span class="w"></span>
+<span class="kt">reg</span><span class="w"> </span><span class="n">rst_n</span><span class="p">;</span><span class="w"></span>
+<span class="kt">reg</span><span class="w"> </span><span class="n">sequence</span><span class="p">;</span><span class="w"></span>
+<span class="kt">wire</span><span class="w"> </span><span class="n">test</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">parameter</span><span class="w"> </span><span class="n">test_seq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">10</span><span class="mb">&#39;b1100100110</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">always</span><span class="w"> </span><span class="p">#</span><span class="mh">5</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="o">~</span><span class="n">clk</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">task</span><span class="w"> </span><span class="n">SEND_SEQ</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="mh">9</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">i_seq</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">integer</span><span class="w"> </span><span class="n">ii</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">begin</span><span class="w"></span>
+<span class="w">        </span><span class="n">sequence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">#</span><span class="mh">10</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">ii</span><span class="o">=</span><span class="mh">9</span><span class="p">;</span><span class="w"> </span><span class="n">ii</span><span class="o">&gt;=</span><span class="mh">0</span><span class="p">;</span><span class="n">ii</span><span class="o">=</span><span class="n">ii</span><span class="o">-</span><span class="mh">1</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
+<span class="w">            </span><span class="n">sequence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i_seq</span><span class="p">[</span><span class="n">ii</span><span class="p">];</span><span class="w"></span>
+<span class="w">            </span><span class="p">#</span><span class="mh">10</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">end</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"></span>
+<span class="k">endtask</span><span class="w"></span>
+
+<span class="n">sequence_check_moore</span><span class="w"> </span><span class="n">dut</span><span class="p">(.</span><span class="n">clk</span><span class="p">(</span><span class="n">clk</span><span class="p">),.</span><span class="n">rst_n</span><span class="p">(</span><span class="n">rst_n</span><span class="p">),.</span><span class="n">sequence</span><span class="p">(</span><span class="n">sequence</span><span class="p">),.</span><span class="n">test</span><span class="p">(</span><span class="n">test</span><span class="p">));</span><span class="w"></span>
+
+<span class="k">initial</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
+<span class="n">$dumpfile</span><span class="p">(</span><span class="s">&quot;sequence_check_moore_tb.vcd&quot;</span><span class="p">);</span><span class="w"> </span>
+<span class="n">$dumpvars</span><span class="p">(</span><span class="mh">0</span><span class="p">,</span><span class="w"> </span><span class="n">sequence_check_moore_tb</span><span class="p">);</span><span class="w"></span>
+<span class="n">sequence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">clk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">rst_n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"></span>
+<span class="p">#</span><span class="mh">5</span><span class="w"></span>
+<span class="n">rst_n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">#</span><span class="mh">10</span><span class="w"></span>
+<span class="n">rst_n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"></span>
+<span class="p">#</span><span class="mh">10</span><span class="w"></span>
+<span class="n">SEND_SEQ</span><span class="p">(</span><span class="n">test_seq</span><span class="p">);</span><span class="w"></span>
+<span class="nb">$stop</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">end</span><span class="w"></span>
+<span class="k">endmodule</span><span class="w"></span>
+</pre></div>
+
+            </div>
+        </article>
+        <div id="ga-tags">
+    
+    <span class="ga-tag">
+        <a class="ga-highlight" href="/Blog/tag/Verilog/">#Verilog</a>
+    </span>
+    
+    <span class="ga-tag">
+        <a class="ga-highlight" href="/Blog/tag/GitHub/">#GitHub</a>
+    </span>
+    
+</div>
+    </section>
+
+    
+<section id="ga-content_pager">
+
+    <div class="next">
+        <h3>没有了</h3>
+        <p class="yue">这是最新的文章</p>
+    </div>
+
+
+    <div class="prev">
+        <a class="ga-highlight" href="/Blog/archives/verilog_cheat_sheet/">Verilog Cheat Sheet</a>
+        <p class="yue">记录一下Verilog总忘的syntax!</p>
+    </div>
+
+</section>
+
+
+    
+
+</main>
+
+                <footer class="ga-mono" id="ga-footer">
+                    <section>
+                        <span id="ga-uptime"></span>
+                        <span class="brand">一民的小屋</span>
+                    </section>
+                    <section>
+                        <p class="copyright">
+                            <span>Copyright © 2022 高一民</span>
+                            <span>Powered by <a no-style href="https://github.com/AlanDecode/Maverick" target="_blank">Maverick & Galileo</a></span>
+                        </p>
+                        <div class="copyright">
+                            <span class="footer-addon">
+                                
+                            </span>
+                            <nav class="social-links">
+                                <ul><li><a class="no-style" title="Twitter" href="https://twitter.com/AlanDecode" target="_blank"><i class="gi gi-twitter"></i>Twitter</a></li><span class="separator">·</span><li><a class="no-style" title="GitHub" href="https://github.com/YiminGao0113" target="_blank"><i class="gi gi-github"></i>GitHub</a></li></ul>
+                            </nav>
+                        </div>
+                    </section>
+                    <script>
+                        var site_build_date = "2022-04-02T16:51+08:00"
+                    </script>
+                    <script src="https://cdn.jsdelivr.net/gh/YiminGao0113/Blog@gh-pages/assets/galileo-dc4baa7cf4.js"></script>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <!--katex-->
+    <script defer src="https://cdn.jsdelivr.net/gh/YiminGao0113/Blog@gh-pages/assets/katex.min.js"></script>
+    <script>
+    mathOpts = {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "$", right: "$", display: false},
+            {left: "\\(", right: "\\)", display: false}
+        ]
+    };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/gh/YiminGao0113/Blog@gh-pages/assets/auto-render.min.js" onload="renderMathInElement(document.body, mathOpts);"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/YiminGao0113/Blog@gh-pages/assets/ExSearch/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/YiminGao0113/Blog@gh-pages/assets/ExSearch/ExSearch-493cb9cd89.js"></script>
+
+    
+    </body>
+</html>
