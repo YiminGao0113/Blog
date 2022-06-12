@@ -22,8 +22,8 @@ cd -    # Move to your previous directory
 ls -R   # List all the files in sub-directories as well
 ls -a   # Show the hidden files
 ls -al  # List add detailed information
-cp -r /(from) /(dest) 
-mv -r /(from) /(dest) 
+cp -r /from /dest
+mv -r /from /dest
 rm -rf # 删库跑路
 grep -r “fdfdsaf” lib/*/*prx   # Find patterns in followed location
 diff f1.v f2.v # Find differences between two files
