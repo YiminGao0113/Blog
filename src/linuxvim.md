@@ -29,6 +29,7 @@ grep -r “fdfdsaf” lib/*/*prx   # Find patterns in followed location
 diff f1.v f2.v # Find differences between two files
 jobs    # List your background processes
 kill %n # Kill a process by ID
+grep "" / # Find patterns in a directory    
 ```
 
 ## Vim
@@ -40,7 +41,6 @@ kill %n # Kill a process by ID
 :%s/foo/bar/gc    # Substitute all but ask for confirmation
 :split            # Split the screen
 :vsplit           # (ctrl+w followed by arrow key to switch)
-:e /location      # Open a file
-grep "" /         # Find patterns in a directory      
+:e /location      # Open a file  
 :e $MYVIMRC       # Edit the configurable file
 ```
