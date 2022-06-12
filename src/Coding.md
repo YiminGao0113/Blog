@@ -13,7 +13,7 @@ tags:
 excerpt: 常见的手撕代码问题
 
 ---
-[notice]记录常见的手撕代码问题，Github Repo: [:D](https://github.com/YiminGao0113/Interview/tree/master/verilog/RTL)[/notice]
+[notice]记录常见的手撕代码问题=>[Github Repo](https://github.com/YiminGao0113/Interview/tree/master/verilog/RTL)[/notice]
 
 ## 奇数分频
 ```verilog
@@ -415,6 +415,7 @@ $stop;
 end
 endmodule
 ```
+<<<<<<< HEAD
 
 ## Typical problems in HDLBits
 Create a set of counters suitable for use as a 12-hour clock (with am/pm indicator). Your counters are clocked by a fast-running clk, with a pulse on ena whenever your clock should increment (i.e., once per second).
@@ -493,3 +494,5 @@ assign check_tmp = ^bus;
 assign check = sel ? check_tmp : ~check_tmp;
 endmodule
 ```
+=======
+>>>>>>> 4021b5b97f3bbd98e5c65f293d89207c5f3fb61c
