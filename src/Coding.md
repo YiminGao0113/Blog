@@ -494,5 +494,3 @@ assign check_tmp = ^bus;
 assign check = sel ? check_tmp : ~check_tmp;
 endmodule
 ```
-=======
->>>>>>> 4021b5b97f3bbd98e5c65f293d89207c5f3fb61c
