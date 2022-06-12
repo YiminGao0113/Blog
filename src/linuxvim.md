@@ -24,7 +24,7 @@ ls -a   # Show the hidden files
 ls -al  # List add detailed information
 cp -r /from /dest
 mv -r /from /dest
-rm -rf # 删库跑路
+rm -rf # 删库跑路(无法撤回)
 grep -r “fdfdsaf” lib/*/*prx   # Find patterns in followed location
 diff f1.v f2.v # Find differences between two files
 jobs    # List your background processes
