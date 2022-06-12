@@ -19,13 +19,13 @@ enable_jsdelivr = {
 }
 
 # 站点设置
-site_name = "一民的Blog"
+site_name = "Yimin's Blog"
 site_logo = "${static_prefix}logo.png"
 site_build_date = "2022-04-02T16:51+08:00"
 author = "高一民"
 email = "yg9bq@virginia.edu"
 author_homepage = "https://yimingao.com/"
-description = "One day at a time."
+description = "Dream big, start small."
 key_words = ['Maverick', '高一民', 'Galileo', 'blog']
 language = 'zh-CN'
 external_links = [
