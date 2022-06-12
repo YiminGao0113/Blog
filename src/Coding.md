@@ -13,7 +13,7 @@ tags:
 excerpt: 常见的手撕代码问题
 
 ---
-[notice]记录常见的手撕代码问题，Github Repo：[repo:](https://github.com/YiminGao0113/Interview/tree/master/verilog/RTL)[/notice]
+[notice]记录常见的手撕代码问题，Github Repo[https://github.com/YiminGao0113/Interview/tree/master/verilog/RTL](https://github.com/YiminGao0113/Interview/tree/master/verilog/RTL)[/notice]
 
 ## 奇数分频
 ```verilog
