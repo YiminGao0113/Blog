@@ -6,7 +6,7 @@ date: 2022-04-03 23:52
 status: publish
 author: Yimin
 categories: 
-  - IC Interview
+  - Cheatsheet
 tags: 
   - Verilog
   - GitHub
