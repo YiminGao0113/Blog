@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Linux and vim cheatsheet
+title: Linux and Vim cheatsheet
 slug: linux&vim
 date: 2022-06-11 23:27
 status: publish
@@ -10,10 +10,10 @@ categories:
 tags: 
   - Linux
   - Vim
-excerpt: 常用的linux指令和Vim指令
+excerpt: 常用的Linux指令和Vim指令
 
 ---
-[notice]记录常用的linux指令和Vim指令[/notice]
+[notice]记录常用的Linux指令和Vim指令[/notice]
 
 ## Linux
 ```shell
