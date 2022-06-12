@@ -415,7 +415,6 @@ $stop;
 end
 endmodule
 ```
-<<<<<<< HEAD
 
 ## Typical problems in HDLBits
 Create a set of counters suitable for use as a 12-hour clock (with am/pm indicator). Your counters are clocked by a fast-running clk, with a pulse on ena whenever your clock should increment (i.e., once per second).
