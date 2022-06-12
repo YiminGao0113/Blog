@@ -10,10 +10,10 @@ categories:
 tags: 
   - Linux
   - Vim
-excerpt: 常用的linux指令和vim指令
+excerpt: 常用的linux指令和Vim指令
 
 ---
-[notice]记录常用的linux指令和vim指令[/notice]
+[notice]记录常用的linux指令和Vim指令[/notice]
 
 ## Linux
 ```shell
