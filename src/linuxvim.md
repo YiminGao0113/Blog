@@ -33,16 +33,14 @@ kill %n # Kill a process by ID
 
 ## Vim
 
-# Substitute first work     :s/foo/bar/
-
-# Substitute first line     :s/foo/bar/g
-
-# Substitute all        :%s/foo/bar/g
-
-# Substitute all but ask for confirmation       :%s/foo/bar/gc
-
-# Split     :split  :vsplit (ctrl+w followed by arrow key to switch) :e /location(Open a file)
-
-# Find patterns in a directory      grep “fdfdsaf” lib/*/*prx
-
-# Edit the configurable file  :e $MYVIMRC
+```shell
+:s/foo/bar/       # Substitute first work     
+:s/foo/bar/g      # Substitute first line
+:%s/foo/bar/g     # Substitute all
+:%s/foo/bar/gc    # Substitute all but ask for confirmation
+:split            # Split the screen
+:vsplit           # (ctrl+w followed by arrow key to switch)
+:e /location      # Open a file
+grep "" /         # Find patterns in a directory      
+:e $MYVIMRC       # Edit the configurable file
+```
