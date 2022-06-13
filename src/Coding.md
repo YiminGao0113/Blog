@@ -416,6 +416,193 @@ end
 endmodule
 ```
 
+## Vending Machine
+```verilog
+module vending_machine(
+    input clk,
+    input rst_n,
+    input [1:0] coin,
+    output drink,
+    output change
+);
+
+parameter IDLE = 4'b0000, s1 = 4'b0001, s2 = 4'b0010, s3 = 4'b0100, s4 = 4'b1000;
+
+reg [3:0] state, next_state;
+
+always @(posedge clk or negedge rst_n)
+    if (!rst_n)
+        state <= IDLE;
+    else
+        state <= next_state;
+
+always @(*)
+    case (state)
+        IDLE: next_state = coin[1] ? s2 : (coin[0] ? s1 : IDLE);
+        s1: next_state = coin[1] ? s3 : (coin[0] ? s2 : s1);
+        s2: next_state = coin[1] ? s4 : (coin[0] ? s3 : s2);
+        s3: next_state = IDLE;
+        s4: next_state = IDLE;
+        default: next_state = IDLE;
+    endcase
+
+assign drink = state==s3||state==s4;
+assign change = state==s4;
+
+endmodule
+```
+
+## Asynchronous reset, synchronous release
+
+避免异步复位在释放的时候不满足setup/hold time而产生亚稳态
+
+```verilog
+module sync_async_rst(
+    input clk,
+    input rst_n,
+    output rst_out
+);
+reg rst_temp;
+reg rst_out_reg;
+
+always @(posedge clk or negedge rst_n)
+    if (!rst_n) begin
+        rst_temp <= 0;
+        rst_out_reg <= 0;
+    end
+    else begin
+        rst_temp <= rst_n;
+        rst_out_reg <= rst_temp;
+    end
+
+assign rst_out = rst_out_reg;
+
+endmodule
+```
+
+## Binary to gray converter
+Design:
+```verilog
+module gray2bin #(
+    parameter WIDTH = 4
+)(
+    input [WIDTH-1:0] G,
+    output [WIDTH-1:0] bin
+);
+
+reg [WIDTH-1:0] bin_reg;
+integer i;
+
+always @(*) begin
+    bin_reg[WIDTH-1] = G[WIDTH-1];
+    for (i=WIDTH-2; i>=0; i=i-1) begin
+        bin_reg[i] = bin_reg[i+1]^G[i];
+    end
+end
+
+assign bin = bin_reg;
+
+endmodule
+```
+Testbench:
+```verilog
+module bin2gray_tb();
+parameter WIDTH = 4;
+
+reg [WIDTH-1:0] bin;
+wire [WIDTH-1:0] G;
+
+integer i;
+
+bin2gray #(WIDTH(WIDTH)) dut(.bin(bin),.G(G));
+
+initial begin
+    $dumpfile("bin2gray_tb.vcd"); 
+    $dumpvars(0, bin2gray_tb);
+    bin = 0;
+    #10
+    for (i=0; i<2**WIDTH; i=i+1) begin
+        bin = bin + 1;
+        #10;
+    end
+    $stop;
+end
+
+endmodule
+```
+
+## Gray to binary converter
+Design
+```verilog
+module gray2bin #(
+    parameter WIDTH = 4
+)(
+    input [WIDTH-1:0] G,
+    output [WIDTH-1:0] bin
+);
+
+reg [WIDTH-1:0] bin_reg;
+integer i;
+
+always @(*) begin
+    bin_reg[WIDTH-1] = G[WIDTH-1];
+    for (i=WIDTH-2; i>=0; i=i-1) begin
+        bin_reg[i] = bin_reg[i+1]^G[i];
+    end
+end
+
+assign bin = bin_reg;
+
+endmodule
+```
+Testbench:
+```verilog
+module gray2bin_tb();
+parameter WIDTH = 4;
+
+reg [WIDTH-1:0] G;
+wire [WIDTH-1:0] bin;
+
+integer i;
+
+gray2bin #(.WIDTH(WIDTH)) dut (.bin(bin),.G(G));
+
+initial begin
+    $dumpfile("gray2bin_tb.vcd"); 
+    $dumpvars(0, gray2bin_tb);
+    G = 0;
+    #10
+    for (i=0; i<2**WIDTH; i=i+1) begin
+        G = G + 1;
+        #10;
+    end
+    $stop;
+end
+
+endmodule
+```
+
+## Edge detector
+```verilog
+module edge_detector(
+    input clk,
+    input signal,
+    output pe,
+    output ne,
+    output either_edge
+);
+reg signal_reg;
+
+always @(posedge clk)
+    signal_reg <= signal;
+
+assign pe = signal & ~signal_reg;
+assign ne = ~signal & signal_reg;
+assign either_edge = pe | ne;
+
+endmodule
+```
+
 ## Typical problems in HDLBits
 Create a set of counters suitable for use as a 12-hour clock (with am/pm indicator). Your counters are clocked by a fast-running clk, with a pulse on ena whenever your clock should increment (i.e., once per second).
 
