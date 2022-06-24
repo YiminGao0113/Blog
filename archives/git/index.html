@@ -19,7 +19,7 @@
     <script>
         var ExSearchConfig = {
             root: "",
-            api: "https://cdn.jsdelivr.net/gh/YiminGao0113/Blog@gh-pages/a71aec864b674e18389fa14001f8afd2.json"
+            api: "https://cdn.jsdelivr.net/gh/YiminGao0113/Blog@gh-pages/371669d139f235b04607c035e6e01056.json"
         }
     </script>
     
@@ -80,22 +80,51 @@
                 
             </span>
             <div class="ga-content_body">
-                <div class="notice">记录常用的git指令</div><div class="highlight"><pre><span></span>$ git clone <span class="c1"># Clone a repo to local</span>
-$ git clone -b AIRISCPiM  - -single-branch &lt;url&gt; <span class="c1"># Clone a specific branch</span>
-$ git branch <span class="c1"># Show current branch</span>
-$ git checkout <span class="c1"># Switch to another branch</span>
-$ git add . <span class="c1"># adds all changes in the working directory to the staging area</span>
-$ git add *.c <span class="c1"># Add only C files</span>
-$ git add fortz.c diff.py <span class="c1"># Add specific files</span>
-$ git restore --stage &lt;file&gt; <span class="c1"># Unstage: Discard uncommitted local changes in the local branch. (Want to redo after git add)</span>
-$ git commit -m <span class="s2">&quot;First Commit&quot;</span> <span class="c1"># Commit the changes</span>
-$ git reset --soft AIRISCPiM~11 <span class="c1"># Remove git commit but keep the change, AIRISCPiM is the branch name, ~11 is how many commits to remove</span>
-$ git reset &lt;file&gt; <span class="c1"># Untrack a specific file</span>
-$ git push -u origin AIRISCPiM <span class="c1"># Push to a branch(AIRISCPiM) from local repo(origin)</span>
-$ git push <span class="c1"># When you are on the right branch just do git push</span>
-$ git pull <span class="c1"># Fetch and download content from a remote repo and update local repo</span>
-$ git status <span class="c1"># Displays the state of the working directory and the staging area</span>
-</pre></div>
+                <div class="notice">记录常用的git指令</div><h2>Clone a repo to local</h2>
+
+<pre><code>$ git clone</code></pre>
+<h2>Clone a specific branch</h2>
+
+<pre><code>$ git clone -b AIRISCPiM  - -single-branch &lt;url&gt;</code></pre>
+<h2>Show current branch</h2>
+
+<pre><code>$ git branch</code></pre>
+<h2>Switch to another branch</h2>
+
+<pre><code>$ git checkout</code></pre>
+<h1>Stage files</h1>
+
+<pre><code>$ git add .</code></pre>
+<p>Add only C files</p>
+
+<pre><code>$ git add *.c</code></pre>
+<p>Add specific files</p>
+
+<pre><code>$ git add fortz.c diff.py</code></pre>
+<h1>Unstage: Discard uncommitted local changes in the local branch. (Want to redo after git add)</h1>
+
+<pre><code>$ git restore --stage &lt;file&gt;</code></pre>
+<h2>Commit the changes</h2>
+
+<pre><code>$ git commit -m "First Commit"</code></pre>
+<h2>Remove git commit but keep the change, AIRISCPiM is the branch name, ~11 is how many commits to remove</h2>
+
+<pre><code>$ git reset --soft AIRISCPiM~11</code></pre>
+<h2>Untrack a specific file</h2>
+
+<pre><code>$ git reset &lt;file&gt;</code></pre>
+<h2>Push to a branch(AIRISCPiM) from local repo(origin)</h2>
+
+<pre><code>$ git push -u origin AIRISCPiM</code></pre>
+<h2>When you are on the right branch just do git push</h2>
+
+<pre><code>$ git push</code></pre>
+<h2>Fetch and download content from a remote repo and update local repo</h2>
+
+<pre><code>$ git pull</code></pre>
+<h2>Displays the state of the working directory and the staging area</h2>
+
+<pre><code>$ git status</code></pre>
 
             </div>
         </article>
