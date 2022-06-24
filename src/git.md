@@ -13,7 +13,7 @@ excerpt: 常用的git指令
 ---
 
 
-[notice]记录一些常用的git指令[/notice]
+[notice]记录常用的git指令[/notice]
 
 ## Clone
 Clone a remote repo to local
