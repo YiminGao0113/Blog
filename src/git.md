@@ -22,7 +22,7 @@ $ git clone <url>
 ```
 Clone a specific branch
 ```
-$ git clone <url> -b AIRISCPiM  - -single-branch <url> 
+$ git clone <url> -b AIRISCPiM  --single-branch <url> 
 ```
 
 ## Branch
@@ -32,7 +32,7 @@ $ git branch
 ```
 Switch to another branch
 ```
-$ git checkout 
+$ git checkout AIRISCPiM
 ```
 
 ## Stage files
