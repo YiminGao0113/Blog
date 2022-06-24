@@ -28,7 +28,7 @@ $ git clone <url> -b AIRISCPiM  - -single-branch <url>
 ## Branch
 Show current branch
 ```
-$ git branch 
+$ git branch
 ```
 Switch to another branch
 ```
