@@ -13,7 +13,7 @@ excerpt: Hello World!
 ---
 
 ---
-[notice]记录常用的git command[/notice]
+[notice]记录常用的git指令[/notice]
 
 
 ```shell
