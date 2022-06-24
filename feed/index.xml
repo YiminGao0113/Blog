@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Yimin's Blog</title><link>/Blog/</link><description>Dream big, start small.</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/YiminGao0113/Blog@gh-pages/logo.png</url><title>Yimin's Blog</title><link>/Blog/</link></image><language>zh-CN</language><lastBuildDate>Mon, 13 Jun 2022 03:15:52 +0806</lastBuildDate><pubDate>Mon, 13 Jun 2022 03:15:52 +0806</pubDate><item><title>我的第一篇文章</title><link>/Blog/archives/my-first-awesome-post/</link><description>&lt;p&gt;这是我的第一篇文章。文章使用 GitHub 管理，并通过 GitHub Actions 自动构建与发布！&lt;/p&gt;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Yimin's Blog</title><link>/Blog/</link><description>Dream big, start small.</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/YiminGao0113/Blog@gh-pages/logo.png</url><title>Yimin's Blog</title><link>/Blog/</link></image><language>zh-CN</language><lastBuildDate>Fri, 24 Jun 2022 23:18:38 +0806</lastBuildDate><pubDate>Fri, 24 Jun 2022 23:18:38 +0806</pubDate><item><title>我的第一篇文章</title><link>/Blog/archives/my-first-awesome-post/</link><description>&lt;p&gt;这是我的第一篇文章。文章使用 GitHub 管理，并通过 GitHub Actions 自动构建与发布！&lt;/p&gt;
 </description><author>yg9bq@virginia.edu (Yimin)</author><guid isPermaLink="true">/Blog/archives/my-first-awesome-post/</guid><pubDate>Sat, 02 Apr 2022 16:34:00 +0806</pubDate></item><item><title>Verilog Cheat Sheet</title><link>/Blog/archives/verilog_cheat_sheet/</link><description>&lt;div class="notice"&gt;记录一下刷题过程中Verilog总忘，总搞混的语法！&lt;/div&gt;&lt;h2&gt;If Statement&lt;/h2&gt;
 &lt;p&gt;When there are more than one commands, add begin ... end syntax for that branch.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
@@ -706,4 +706,21 @@ grep &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt; / &lt;span class="
 :e /location      &lt;span class="c1"&gt;# Open a file  &lt;/span&gt;
 :e &lt;span class="nv"&gt;$MYVIMRC&lt;/span&gt;       &lt;span class="c1"&gt;# Edit the configurable file&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-</description><author>yg9bq@virginia.edu (Yimin)</author><guid isPermaLink="true">/Blog/archives/linux&amp;vim/</guid><pubDate>Sat, 11 Jun 2022 23:27:00 +0806</pubDate></item></channel></rss>
+</description><author>yg9bq@virginia.edu (Yimin)</author><guid isPermaLink="true">/Blog/archives/linux&amp;vim/</guid><pubDate>Sat, 11 Jun 2022 23:27:00 +0806</pubDate></item><item><title>Git Command</title><link>/Blog/archives/git/</link><description>&lt;hr&gt;
+&lt;div class="notice"&gt;记录常用的git command&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git clone &lt;span class="c1"&gt;# Clone a repo to local&lt;/span&gt;
+$ git clone -b AIRISCPiM  - -single-branch &amp;lt;url&amp;gt; &lt;span class="c1"&gt;# Clone a specific branch&lt;/span&gt;
+$ git branch &lt;span class="c1"&gt;# Show current branch&lt;/span&gt;
+$ git checkout &lt;span class="c1"&gt;# Switch to another branch&lt;/span&gt;
+$ git add . &lt;span class="c1"&gt;# adds all changes in the working directory to the staging area&lt;/span&gt;
+$ git add *.c &lt;span class="c1"&gt;# Add only C files&lt;/span&gt;
+$ git add fortz.c diff.py &lt;span class="c1"&gt;# Add specific files&lt;/span&gt;
+$ git restore --stage &amp;lt;file&amp;gt; &lt;span class="c1"&gt;# Unstage: Discard uncommitted local changes in the local branch. (Want to redo after git add)&lt;/span&gt;
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;First Commit&amp;quot;&lt;/span&gt; &lt;span class="c1"&gt;# Commit the changes&lt;/span&gt;
+$ git reset --soft AIRISCPiM~11 &lt;span class="c1"&gt;# Remove git commit but keep the change, AIRISCPiM is the branch name, ~11 is how many commits to remove&lt;/span&gt;
+$ git reset &amp;lt;file&amp;gt; &lt;span class="c1"&gt;# Untrack a specific file&lt;/span&gt;
+$ git push -u origin AIRISCPiM &lt;span class="c1"&gt;# Push to a branch(AIRISCPiM) from local repo(origin)&lt;/span&gt;
+$ git push &lt;span class="c1"&gt;# When you are on the right branch just do git push&lt;/span&gt;
+$ git pull &lt;span class="c1"&gt;# Fetch and download content from a remote repo and update local repo&lt;/span&gt;
+$ git status &lt;span class="c1"&gt;# Displays the state of the working directory and the staging area&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+</description><author>yg9bq@virginia.edu (Yimin)</author><guid isPermaLink="true">/Blog/archives/git/</guid><pubDate>Fri, 24 Jun 2022 18:51:00 +0806</pubDate></item></channel></rss>
