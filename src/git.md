@@ -6,7 +6,7 @@ date: 2022-06-24 18:51
 status: publish
 author: Yimin
 categories: 
-  - cheetsheet
+  - cheatsheet
 tags: 
   - git
 excerpt: Hello World!
