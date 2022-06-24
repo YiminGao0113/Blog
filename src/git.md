@@ -9,7 +9,7 @@ categories:
   - cheatsheet
 tags: 
   - git
-excerpt: Hello World!
+excerpt: 常用的git指令
 ---
 
 
