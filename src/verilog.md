@@ -12,7 +12,7 @@ tags:
   - GitHub
 excerpt: 记录一下Verilog总忘的syntax
 ---
-[notice]记录一下刷题过程中Verilog总忘，总搞混的语法~[/notice]
+[notice]记录一下刷题过程中Verilog总忘，总搞混的语法.[/notice]
 
 ## If Statement
 When there are more than one commands, add begin ... end syntax for that branch.
